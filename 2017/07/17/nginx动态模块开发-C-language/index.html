@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://leonardocaesarz.github.io/2017/07/17/nginx动态模块开发-C-language/index.html">
 <meta property="og:site_name" content="CaesarZ">
 <meta property="og:description" content="使用 套用模版 复制模版文件夹，将所有”xxx”替换为开发者自己命名的模块名称，包括文件名与文件内容  编写业务 为ngx_http_xxx_module.c模版对应的新命名C文件编写业务逻辑，见”// todo”处  安装nginx并编译、加入动态模块 nginx可使用yum安装，版本要求大于1.9.11，另下载对应版本源码，用于编译动态模块 1234567891011wget http://n">
-<meta property="og:updated_time" content="2017-07-17T15:49:49.000Z">
+<meta property="og:updated_time" content="2017-07-17T16:57:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx动态模块开发(C language)">
 <meta name="twitter:description" content="使用 套用模版 复制模版文件夹，将所有”xxx”替换为开发者自己命名的模块名称，包括文件名与文件内容  编写业务 为ngx_http_xxx_module.c模版对应的新命名C文件编写业务逻辑，见”// todo”处  安装nginx并编译、加入动态模块 nginx可使用yum安装，版本要求大于1.9.11，另下载对应版本源码，用于编译动态模块 1234567891011wget http://n">
@@ -364,6 +364,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-1.12.1-1.el6.ngx.x86_64.rpm</div><div class="line">rpm -ivh nginx-1.12.1-1.el6.ngx.x86_64.rpm</div><div class="line">yum pcre-devel openssl-devel zlib-devel</div><div class="line">cd</div><div class="line">wget http://nginx.org/download/nginx-1.12.1.tar.gz</div><div class="line">tar zxvf nginx-1.12.1.tar.gz</div><div class="line">cd nginx-1.12.1</div><div class="line">./configre --add-dynamic-module=[path/to/new/module/dir]</div><div class="line">make modules</div><div class="line">cp ngx_http_[module_name]_module.so /etc/nginx/modules</div><div class="line">service nginx restart</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<a id="more"></a>
 <h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>相关注释已集成，开发常规handler动态模块已足够。</p>
 <h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>文件夹结构如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ngx_http_xxx_module</div><div class="line">|-ngx_http_xxx_module.c</div><div class="line">|-config</div></pre></td></tr></table></figure>

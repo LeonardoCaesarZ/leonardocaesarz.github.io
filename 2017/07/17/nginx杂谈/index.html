@@ -93,13 +93,13 @@
 
 
 
-<meta name="description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。  网络模型阻塞式为同步模型，最容易实现的模型，易理解，见图  非阻塞式为同步模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可">
+<meta name="description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。">
 <meta name="keywords" content="nginx,网络模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx杂谈">
 <meta property="og:url" content="http://leonardocaesarz.github.io/2017/07/17/nginx杂谈/index.html">
 <meta property="og:site_name" content="CaesarZ">
-<meta property="og:description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。  网络模型阻塞式为同步模型，最容易实现的模型，易理解，见图  非阻塞式为同步模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可">
+<meta property="og:description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。">
 <meta property="og:image" content="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg">
 <meta property="og:image" content="https://pic2.zhimg.com/7d3eb389b7724878bd7e12ebc6dbcdb5_b.jpg">
 <meta property="og:image" content="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="http://my.csdn.net/uploads/201204/12/1334216724_2405.jpg">
 <meta property="og:image" content="http://tengine.taobao.org/book/_images/chapter-2-1.PNG">
 <meta property="og:image" content="http://tengine.taobao.org/book/_images/chapter-2-2.PNG">
-<meta property="og:updated_time" content="2017-07-17T15:57:28.000Z">
+<meta property="og:updated_time" content="2017-07-17T16:58:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx杂谈">
-<meta name="twitter:description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。  网络模型阻塞式为同步模型，最容易实现的模型，易理解，见图  非阻塞式为同步模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可">
+<meta name="twitter:description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。">
 <meta name="twitter:image" content="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg">
 
 
@@ -368,6 +368,7 @@
 <p>同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。</p>
 <p>阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。</p>
 <p><img src="https://pic2.zhimg.com/7d3eb389b7724878bd7e12ebc6dbcdb5_b.jpg" alt=""></p>
+<a id="more"></a>
 <h3 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h3><h4 id="阻塞式"><a href="#阻塞式" class="headerlink" title="阻塞式"></a>阻塞式</h4><p>为<strong>同步</strong>模型，最容易实现的模型，易理解，见图</p>
 <p><img src="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg" alt=""></p>
 <h4 id="非阻塞式"><a href="#非阻塞式" class="headerlink" title="非阻塞式"></a>非阻塞式</h4><p>为<strong>同步</strong>模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可，原理见图</p>
