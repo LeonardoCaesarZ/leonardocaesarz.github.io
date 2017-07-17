@@ -93,13 +93,13 @@
 
 
 
-<meta name="description" content="参考《Unix网络编程》 http://blog.csdn.net/pi9nc/article/details/11975667 http://tengine.taobao.org/book/chapter_02.html http://blog.csdn.net/zhxue123/article/details/21087165 https://www.nginx.com/blog/thread">
+<meta name="description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。  网络模型阻塞式为同步模型，最容易实现的模型，易理解，见图  非阻塞式为同步模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可">
 <meta name="keywords" content="nginx,网络模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx杂谈">
 <meta property="og:url" content="http://leonardocaesarz.github.io/2017/07/17/nginx杂谈/index.html">
 <meta property="og:site_name" content="CaesarZ">
-<meta property="og:description" content="参考《Unix网络编程》 http://blog.csdn.net/pi9nc/article/details/11975667 http://tengine.taobao.org/book/chapter_02.html http://blog.csdn.net/zhxue123/article/details/21087165 https://www.nginx.com/blog/thread">
+<meta property="og:description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。  网络模型阻塞式为同步模型，最容易实现的模型，易理解，见图  非阻塞式为同步模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可">
 <meta property="og:image" content="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg">
 <meta property="og:image" content="https://pic2.zhimg.com/7d3eb389b7724878bd7e12ebc6dbcdb5_b.jpg">
 <meta property="og:image" content="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="http://my.csdn.net/uploads/201204/12/1334216724_2405.jpg">
 <meta property="og:image" content="http://tengine.taobao.org/book/_images/chapter-2-1.PNG">
 <meta property="og:image" content="http://tengine.taobao.org/book/_images/chapter-2-2.PNG">
-<meta property="og:updated_time" content="2017-07-17T15:50:06.000Z">
+<meta property="og:updated_time" content="2017-07-17T15:57:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx杂谈">
-<meta name="twitter:description" content="参考《Unix网络编程》 http://blog.csdn.net/pi9nc/article/details/11975667 http://tengine.taobao.org/book/chapter_02.html http://blog.csdn.net/zhxue123/article/details/21087165 https://www.nginx.com/blog/thread">
+<meta name="twitter:description" content="基础知识同步异步&amp;amp;阻塞非阻塞处理请求的过程可以分为两个时间阶段，等待数据、拷贝数据，见图。  同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。 阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。  网络模型阻塞式为同步模型，最容易实现的模型，易理解，见图  非阻塞式为同步模型，在阻塞式模型的原有基础上，将socket设定为非阻塞即可">
 <meta name="twitter:image" content="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg">
 
 
@@ -363,12 +363,7 @@
       
 
       
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>《Unix网络编程》</p>
-<p><a href="http://blog.csdn.net/pi9nc/article/details/11975667" target="_blank" rel="external">http://blog.csdn.net/pi9nc/article/details/11975667</a></p>
-<p><a href="http://tengine.taobao.org/book/chapter_02.html" target="_blank" rel="external">http://tengine.taobao.org/book/chapter_02.html</a></p>
-<p><a href="http://blog.csdn.net/zhxue123/article/details/21087165" target="_blank" rel="external">http://blog.csdn.net/zhxue123/article/details/21087165</a></p>
-<p><a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank" rel="external">https://www.nginx.com/blog/thread-pools-boost-performance-9x/</a></p>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="同步异步-amp-阻塞非阻塞"><a href="#同步异步-amp-阻塞非阻塞" class="headerlink" title="同步异步&amp;阻塞非阻塞"></a>同步异步&amp;阻塞非阻塞</h3><p>处理请求的过程可以分为两个时间阶段，<strong>等待数据</strong>、<strong>拷贝数据</strong>，见图。</p>
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="同步异步-amp-阻塞非阻塞"><a href="#同步异步-amp-阻塞非阻塞" class="headerlink" title="同步异步&amp;阻塞非阻塞"></a>同步异步&amp;阻塞非阻塞</h3><p>处理请求的过程可以分为两个时间阶段，<strong>等待数据</strong>、<strong>拷贝数据</strong>，见图。</p>
 <p><img src="http://my.csdn.net/uploads/201204/12/1334216532_9745.jpg" alt=""></p>
 <p>同步与异步：两个时间阶段都由内核完成，即为异步，否则，为同步。</p>
 <p>阻塞与非阻塞：执行read/recv时，函数是否立即返回，无论数据有无。是则非阻塞，否则阻塞。</p>
@@ -425,6 +420,11 @@
 <h4 id="openresty"><a href="#openresty" class="headerlink" title="openresty"></a>openresty</h4><p>原淘宝工程师章亦春对nginx进行改造，并于2011年开源，在nginx基础上支持Lua脚本，并集成大量优秀Lua库，方便于搭建高性能的动态Web服务</p>
 <h3 id="模块开发-C-language"><a href="#模块开发-C-language" class="headerlink" title="模块开发(C language)"></a>模块开发(C language)</h3><p>使用C语言针对业务开发nginx模块，适合于简单、高频的业务，如广告转跳。有3种模块供开发者开发，handler、filter、load-balancer。handler为最常开发的模块，接受请求并产生输出。handler模块的处理结果有3种，成功、失败、拒绝，拒绝可以使该请求改由默认的其他模块处理。</p>
 <p>具体开发细节另开专题。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>《Unix网络编程》</p>
+<p><a href="http://blog.csdn.net/pi9nc/article/details/11975667" target="_blank" rel="external">http://blog.csdn.net/pi9nc/article/details/11975667</a></p>
+<p><a href="http://tengine.taobao.org/book/chapter_02.html" target="_blank" rel="external">http://tengine.taobao.org/book/chapter_02.html</a></p>
+<p><a href="http://blog.csdn.net/zhxue123/article/details/21087165" target="_blank" rel="external">http://blog.csdn.net/zhxue123/article/details/21087165</a></p>
+<p><a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank" rel="external">https://www.nginx.com/blog/thread-pools-boost-performance-9x/</a></p>
 
       
     </div>
@@ -645,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步异步-amp-阻塞非阻塞"><span class="nav-number">2.1.</span> <span class="nav-text">同步异步&阻塞非阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络模型"><span class="nav-number">2.2.</span> <span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞式"><span class="nav-number">2.2.1.</span> <span class="nav-text">阻塞式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非阻塞式"><span class="nav-number">2.2.2.</span> <span class="nav-text">非阻塞式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">2.2.3.</span> <span class="nav-text">多路复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号驱动"><span class="nav-number">2.2.4.</span> <span class="nav-text">信号驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步"><span class="nav-number">2.2.5.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各模型对比"><span class="nav-number">2.2.6.</span> <span class="nav-text">各模型对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用函数对比"><span class="nav-number">2.2.7.</span> <span class="nav-text">多路复用函数对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx"><span class="nav-number">3.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求处理流程"><span class="nav-number">3.2.</span> <span class="nav-text">HTTP请求处理流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#衍生物"><span class="nav-number">3.3.</span> <span class="nav-text">衍生物</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tengine"><span class="nav-number">3.3.1.</span> <span class="nav-text">tengine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#openresty"><span class="nav-number">3.3.2.</span> <span class="nav-text">openresty</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块开发-C-language"><span class="nav-number">3.4.</span> <span class="nav-text">模块开发(C language)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步异步-amp-阻塞非阻塞"><span class="nav-number">1.1.</span> <span class="nav-text">同步异步&阻塞非阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络模型"><span class="nav-number">1.2.</span> <span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞式"><span class="nav-number">1.2.1.</span> <span class="nav-text">阻塞式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非阻塞式"><span class="nav-number">1.2.2.</span> <span class="nav-text">非阻塞式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">1.2.3.</span> <span class="nav-text">多路复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号驱动"><span class="nav-number">1.2.4.</span> <span class="nav-text">信号驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步"><span class="nav-number">1.2.5.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各模型对比"><span class="nav-number">1.2.6.</span> <span class="nav-text">各模型对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用函数对比"><span class="nav-number">1.2.7.</span> <span class="nav-text">多路复用函数对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx"><span class="nav-number">2.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求处理流程"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP请求处理流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#衍生物"><span class="nav-number">2.3.</span> <span class="nav-text">衍生物</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tengine"><span class="nav-number">2.3.1.</span> <span class="nav-text">tengine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#openresty"><span class="nav-number">2.3.2.</span> <span class="nav-text">openresty</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块开发-C-language"><span class="nav-number">2.4.</span> <span class="nav-text">模块开发(C language)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
