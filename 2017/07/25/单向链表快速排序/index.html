@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://leonardocaesarz.github.io/2017/07/25/单向链表快速排序/index.html">
 <meta property="og:site_name" content="CaesarZ">
 <meta property="og:description" content="原理单向链表快速排序与数组快速排序$^1$有所不同，关键部分中，数组快速排序有不断向前的下标访问，这种方式对于双向链表来说可行，但对于单向链表来说，每次访问都会导致大量解引用行为，因此需要对方案进行适度的修改。 单向链表快速排序有两种方案，改变值、改变指针，改变值的方案在节点结构体包含大量变量内容的情况下会造成性能大幅下降，故选择后者。   见《数据结构与算法分析——C语言描述（第二版）》177页">
-<meta property="og:updated_time" content="2017-07-26T14:55:46.000Z">
+<meta property="og:updated_time" content="2017-07-26T18:46:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单向链表快速排序">
 <meta name="twitter:description" content="原理单向链表快速排序与数组快速排序$^1$有所不同，关键部分中，数组快速排序有不断向前的下标访问，这种方式对于双向链表来说可行，但对于单向链表来说，每次访问都会导致大量解引用行为，因此需要对方案进行适度的修改。 单向链表快速排序有两种方案，改变值、改变指针，改变值的方案在节点结构体包含大量变量内容的情况下会造成性能大幅下降，故选择后者。   见《数据结构与算法分析——C语言描述（第二版）》177页">
@@ -359,6 +359,7 @@
 <li>见《数据结构与算法分析——C语言描述（第二版）》177页</li>
 </ol>
 </blockquote>
+<a id="more"></a>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>C语言实现见<a href="https://github.com/LeonardoCaesarZ/algorithm" target="_blank" rel="external">Github</a></p>
 
       
