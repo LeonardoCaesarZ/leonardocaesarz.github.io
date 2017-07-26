@@ -357,7 +357,7 @@
         
           <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>本文将叙述，利用Docker、Sphinx、MySQL搭建全文检索服务的过程。官方为MySQL创建了十分优秀的镜像，而Sphinx镜像则需要自己构建。</p>
 <h2 id="关于Sphinx"><a href="#关于Sphinx" class="headerlink" title="关于Sphinx"></a>关于Sphinx</h2><p>如今，流行的全文检索方案有两种，Sphinx、Lucene。</p>
-<p>Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL协同作业时，Sphinx可以作为单独的应用程序运行，也可以作为插件供MySQL调用。Sphinx的最主要优点是：高速索引、高速搜索、功能纯粹。缺点之一是中文分词支持不佳，促使了Coreseek与SFC（sphinx-for-chinese）的诞生。从版本2.2.2beta开始，Sphinx开始支持插件，笔者认为，可以结合当下先进的开源中文分词方案，开发对应插件。据了解，中国互联网巨头腾讯大量使用Sphinx。</p>
+<p>Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL协同作业时，Sphinx可以作为单独的应用程序运行，也可以作为插件供MySQL调用。Sphinx的最主要优点是：高速索引、高速搜索，同时功能纯粹、使用简单。缺点之一是中文分词支持不佳，促使了Coreseek与SFC（sphinx-for-chinese）的诞生。从版本2.2.2beta开始，Sphinx开始支持插件，笔者认为，可以结合当下先进的开源中文分词方案，开发对应插件。据了解，中国互联网巨头腾讯大量使用Sphinx。</p>
 <p>相较于Sphinx，Lucene为重量级引擎，但不得不承认，Lucene是当前最流行的全文检索方案。</p>
           <!--noindex-->
           <div class="post-button text-center">
