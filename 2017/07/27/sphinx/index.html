@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="CaesarZ">
 <meta property="og:description" content="简述本文将叙述，利用Docker、Sphinx、MySQL搭建全文检索服务的过程。官方为MySQL创建了十分优秀的镜像，而Sphinx镜像则需要自己构建。 关于Sphinx如今，流行的全文检索方案有两种，Sphinx、Lucene。 Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL协同作">
 <meta property="og:image" content="http://leonardocaesarz.github.io/2017/07/27/image/sphinxEmail.png">
-<meta property="og:updated_time" content="2017-07-26T18:41:51.000Z">
+<meta property="og:updated_time" content="2017-07-26T18:43:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sphinx">
 <meta name="twitter:description" content="简述本文将叙述，利用Docker、Sphinx、MySQL搭建全文检索服务的过程。官方为MySQL创建了十分优秀的镜像，而Sphinx镜像则需要自己构建。 关于Sphinx如今，流行的全文检索方案有两种，Sphinx、Lucene。 Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL协同作">
@@ -358,6 +358,7 @@
 <h2 id="关于Sphinx"><a href="#关于Sphinx" class="headerlink" title="关于Sphinx"></a>关于Sphinx</h2><p>如今，流行的全文检索方案有两种，Sphinx、Lucene。</p>
 <p>Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL协同作业时，Sphinx可以作为单独的应用程序运行，也可以作为插件供MySQL调用。Sphinx的最主要优点是：高速索引、高速搜索、功能纯粹。缺点之一是中文分词支持不佳，促使了Coreseek与SFC（sphinx-for-chinese）的诞生。从版本2.2.2beta开始，Sphinx开始支持插件，笔者认为，可以结合当下先进的开源中文分词方案，开发对应插件。据了解，中国互联网巨头腾讯大量使用Sphinx。</p>
 <p>相较于Sphinx，Lucene为重量级引擎，但不得不承认，Lucene是当前最流行的全文检索方案。</p>
+<a id="more"></a>
 <h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>由于Sphinx用以搭配MySQL的方案比较常见，本节介绍如何使Sphinx以独立运行的方式配合MySQL使用</p>
 <ol>
 <li><p>安装Docker（假设宿主机系统为CentOS7）</p>
@@ -367,10 +368,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull mysql:5.7</div></pre></td></tr></table></figure>
 </li>
 <li><p>利用Dokcerfile构建Sphinx镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi Dockerfile // 具体编辑内容见&quot;代码&quot;</div><div class="line">docker build -t [author]/sphinx</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi Dockerfile					// 具体编辑内容见&quot;代码&quot;</div><div class="line">docker build -t [author]/sphinx</div></pre></td></tr></table></figure>
 </li>
 <li><p>启动MySQL镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker run -v [path/to/data]:/var/lib/mysql -v [/path/to/conf]:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[your password] -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</div><div class="line">docker run</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v [path/to/data]:/var/lib/mysql -v [/path/to/conf]:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[your password] -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
 </li>
 <li><p>启动Sphinx镜像，sphinx.conf定义了数据源的索引方式，编写示例见”代码”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v [path/to/data]:/var/lib/sphinx/ -v [path/to/log]:/var/log/sphinx -v [path/to/conf]:/etc/sphinx/sphinx.conf -p 9306:9306 -p 9312:9312 -d [author]/sphinx</div></pre></td></tr></table></figure>
