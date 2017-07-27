@@ -100,12 +100,12 @@
 <meta property="og:url" content="http://leonardocaesarz.github.io/2017/07/27/Sphinx全文检索/index.html">
 <meta property="og:site_name" content="CaesarZ">
 <meta property="og:description" content="简述本文将叙述，利用Docker、Sphinx、MySQL搭建并提供全文检索服务的过程。官方为MySQL创建了十分优秀的镜像，而Sphinx镜像则需要自己构建。 关于Sphinx如今，流行的全文检索方案有两种，Sphinx、Lucene。 Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL">
-<meta property="og:image" content="http://leonardocaesarz.github.io/2017/07/27/Sphinx全文检索/Sphinx全文检索/sphinxEmail.png">
-<meta property="og:updated_time" content="2017-07-27T01:44:05.000Z">
+<meta property="og:image" content="http://otq6ii73r.bkt.clouddn.com/sphinxEmail.png">
+<meta property="og:updated_time" content="2017-07-27T01:56:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sphinx全文检索">
 <meta name="twitter:description" content="简述本文将叙述，利用Docker、Sphinx、MySQL搭建并提供全文检索服务的过程。官方为MySQL创建了十分优秀的镜像，而Sphinx镜像则需要自己构建。 关于Sphinx如今，流行的全文检索方案有两种，Sphinx、Lucene。 Sphinx是俄国人Andrew Aksyonoff于2001年发布的全文检索引擎，使用C/C++开发，提供两种检索服务：SQL协同作业、自定义数据源。与SQL">
-<meta name="twitter:image" content="http://leonardocaesarz.github.io/2017/07/27/Sphinx全文检索/Sphinx全文检索/sphinxEmail.png">
+<meta name="twitter:image" content="http://otq6ii73r.bkt.clouddn.com/sphinxEmail.png">
 
 
 
@@ -392,7 +392,7 @@
 </ul>
 <h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>关于Sphinx插件，可见官网：<a href="http://sphinxsearch.com/docs/current.html#sphinx-plugins" target="_blank" rel="external">http://sphinxsearch.com/docs/current.html#sphinx-plugins</a></p>
 <p>由于Coreseek、SFC已经许久不更新，笔者前段时间想利用indexing-time token filter plugins、query-time token filter plugins这两种插件，结合当前先进的开源中文分词技术，实现中文分词功能。然而，并未找到相关示例，故发邮件给Sphinx官方，见图：</p>
-<p><img src="Sphinx全文检索/sphinxEmail.png" alt="sphinxEmail"></p>
+<p><img src="http://otq6ii73r.bkt.clouddn.com/sphinxEmail.png" alt="sphinxEmail"></p>
 <p>如上所示，官方给了少许提示。等等…给我回信的是不是Andrew Aksyonoff本人…笔者上邮箱刚截完图才发觉回信人的名字有点眼熟，如果是那就太好了哈哈。</p>
 <p>笔者会继续跟进Sphinx插件的相关开发，或许过些日子会发多篇开发流程。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h3><blockquote>
