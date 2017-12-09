@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="docker,hadoop,分布式," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="简述单向链表快速排序与数组快速排序$^1$有所不同，关键部分中，数组快速排序有不断向前的下标访问，这种方式对于双向链表来说可行，但对于单向链表来说，每次访问都会导致大量解引用行为，因此需要对方案进行适度的修改。 单向链表快速排序有两种方案，改变值、改变指针，改变值的方案在节点结构体包含大量变量内容的情况下会造成性能大幅下降，故选择后者。   见《数据结构与算法分析——C语言描述（第二版）》177页">
-<meta name="keywords" content="算法">
+<meta name="description" content="简述由于以后的工作会涉及到大数据，故需要熟悉Hadoop。所以，本文将会对Hadoop环境的搭建与使用进行讲解。 简易部署MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境，可用作本地测试环境  安装docker并启动  下载安装包docker-hadoop，并解压 地址  下载Hadoop，置于docker-hadoop文件夹中解压 地址  制作镜像 12cd do">
+<meta name="keywords" content="docker,hadoop,分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单向链表快速排序">
-<meta property="og:url" content="http://leonardocaesarz.github.io/2017/07/25/单向链表快速排序/index.html">
+<meta property="og:title" content="使用Docker快速搭建Hadoop环境">
+<meta property="og:url" content="http://leonardocaesarz.github.io/2017/12/10/docker-hadoop/index.html">
 <meta property="og:site_name" content="CaesarZ">
-<meta property="og:description" content="简述单向链表快速排序与数组快速排序$^1$有所不同，关键部分中，数组快速排序有不断向前的下标访问，这种方式对于双向链表来说可行，但对于单向链表来说，每次访问都会导致大量解引用行为，因此需要对方案进行适度的修改。 单向链表快速排序有两种方案，改变值、改变指针，改变值的方案在节点结构体包含大量变量内容的情况下会造成性能大幅下降，故选择后者。   见《数据结构与算法分析——C语言描述（第二版）》177页">
-<meta property="og:updated_time" content="2017-07-26T18:47:25.000Z">
+<meta property="og:description" content="简述由于以后的工作会涉及到大数据，故需要熟悉Hadoop。所以，本文将会对Hadoop环境的搭建与使用进行讲解。 简易部署MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境，可用作本地测试环境  安装docker并启动  下载安装包docker-hadoop，并解压 地址  下载Hadoop，置于docker-hadoop文件夹中解压 地址  制作镜像 12cd do">
+<meta property="og:updated_time" content="2017-12-09T16:51:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单向链表快速排序">
-<meta name="twitter:description" content="简述单向链表快速排序与数组快速排序$^1$有所不同，关键部分中，数组快速排序有不断向前的下标访问，这种方式对于双向链表来说可行，但对于单向链表来说，每次访问都会导致大量解引用行为，因此需要对方案进行适度的修改。 单向链表快速排序有两种方案，改变值、改变指针，改变值的方案在节点结构体包含大量变量内容的情况下会造成性能大幅下降，故选择后者。   见《数据结构与算法分析——C语言描述（第二版）》177页">
+<meta name="twitter:title" content="使用Docker快速搭建Hadoop环境">
+<meta name="twitter:description" content="简述由于以后的工作会涉及到大数据，故需要熟悉Hadoop。所以，本文将会对Hadoop环境的搭建与使用进行讲解。 简易部署MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境，可用作本地测试环境  安装docker并启动  下载安装包docker-hadoop，并解压 地址  下载Hadoop，置于docker-hadoop文件夹中解压 地址  制作镜像 12cd do">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://leonardocaesarz.github.io/2017/07/25/单向链表快速排序/"/>
+  <link rel="canonical" href="http://leonardocaesarz.github.io/2017/12/10/docker-hadoop/"/>
 
 
 
 
 
-  <title>单向链表快速排序 | CaesarZ</title>
+  <title>使用Docker快速搭建Hadoop环境 | CaesarZ</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://leonardocaesarz.github.io/2017/07/25/单向链表快速排序/">
+    <link itemprop="mainEntityOfPage" href="http://leonardocaesarz.github.io/2017/12/10/docker-hadoop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaesarZ">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">单向链表快速排序</h1>
+          <h1 class="post-title" itemprop="name headline">使用Docker快速搭建Hadoop环境</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T00:37:39+08:00">
-                2017-07-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T00:50:00+08:00">
+                2017-12-10
               </time>
             
 
@@ -352,15 +352,82 @@
       
 
       
-        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>单向链表快速排序与数组快速排序$^1$有所不同，关键部分中，数组快速排序有不断向前的下标访问，这种方式对于双向链表来说可行，但对于单向链表来说，每次访问都会导致大量解引用行为，因此需要对方案进行适度的修改。</p>
-<p>单向链表快速排序有两种方案，改变值、改变指针，改变值的方案在节点结构体包含大量变量内容的情况下会造成性能大幅下降，故选择后者。</p>
-<blockquote>
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>由于以后的工作会涉及到大数据，故需要熟悉Hadoop。所以，本文将会对Hadoop环境的搭建与使用进行讲解。</p>
+<h2 id="简易部署"><a href="#简易部署" class="headerlink" title="简易部署"></a>简易部署</h2><p>MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境，可用作本地测试环境</p>
 <ol>
-<li>见《数据结构与算法分析——C语言描述（第二版）》177页</li>
+<li><p>安装docker并启动</p>
+</li>
+<li><p>下载安装包docker-hadoop，并解压</p>
+<p><a href="https://github.com/LeonardoCaesarZ/docker-hadoop/archive/master.zip" target="_blank" rel="external">地址</a></p>
+</li>
+<li><p>下载Hadoop，置于docker-hadoop文件夹中解压</p>
+<p><a href="http://apache.mirrors.pair.com/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz" target="_blank" rel="external">地址</a></p>
+</li>
+<li><p>制作镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd docker-hadoop</div><div class="line">docker build -t caesarz/hadoop .</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行安装脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash deploy-all.sh</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行测试脚本，运行wordcount例子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash test.sh</div></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>测试脚本最后会输出如下文本，为统计单词的结果，WARN可不管。至此，Hadoop单机伪分布式环境搭建完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">17/12/09 09:49:42 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable</div><div class="line">6	dfs.audit.logger</div><div class="line">4	dfs.class</div><div class="line">3	dfs.logger</div><div class="line">3	dfs.server.namenode.</div><div class="line">2	dfs.audit.log.maxbackupindex</div><div class="line">2	dfs.period</div><div class="line">2	dfs.audit.log.maxfilesize</div><div class="line">1	dfs.replication</div><div class="line">1	dfs.log</div><div class="line">1	dfs.file</div><div class="line">1	dfs.data.dir</div><div class="line">1	dfs.servers</div><div class="line">1	dfsadmin</div><div class="line">1	dfsmetrics.log</div><div class="line">1	dfs.name.dir</div></pre></td></tr></table></figure>
+<h2 id="详细部署"><a href="#详细部署" class="headerlink" title="详细部署"></a>详细部署</h2><blockquote>
+<p>⚠️：并未经过测试</p>
 </blockquote>
-<a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>C语言实现见<a href="https://github.com/LeonardoCaesarZ/algorithm" target="_blank" rel="external">Github</a></p>
+<p>真 · 分布式搭建：拥有N台物理机，1台作master机，N-1台作slave机。docker仓库应提前准备，各物理机应与仓库建立联系，每台物理机运行一个Hadoop容器。本方案用于生产环境</p>
+<ol>
+<li><p>启动docker</p>
+<blockquote>
+<p>各机执行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service docker start</div></pre></td></tr></table></figure>
+</li>
+<li><p>按需修改各配置文件</p>
+<blockquote>
+<p>master机执行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">wget ...			// 下载部署安装包</div><div class="line"><span class="built_in">cd</span> docker-hadoop</div><div class="line">vi hosts			// 一般来讲，只需要修改这个文件</div><div class="line">vi depoly.sh		// 在docker run语句中使用-p来映射需要的端口</div><div class="line">vi core-site.xml	// 可不修改</div><div class="line">vi hdfs-site.xml	// 可不修改</div><div class="line">vi mapred-site.xml	// 可不修改</div><div class="line">vi yarn-site.xml	// 可不修改</div></pre></td></tr></table></figure>
+</li>
+<li><p>构建镜像，并上传仓库</p>
+<blockquote>
+<p>master机执行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker build -t caesarz/hadoop .</div><div class="line">docker push	caesarz/hadoop	// 上传至仓库</div></pre></td></tr></table></figure>
+</li>
+<li><p>master机启动容器，并将容器的ssh公钥复制到docker-hadoop/authorized_keys中</p>
+<blockquote>
+<p>master机执行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bash deploy.sh [absolute/path/to/share/dir] master</div><div class="line">docker <span class="built_in">exec</span> hadoop-master cat /root/.ssh/authorized_keys &gt; ./authorized_keys</div></pre></td></tr></table></figure>
+</li>
+<li><p>压缩docker-hadoop文件夹，传至各slave机，各slave机下载镜像并启动</p>
+<blockquote>
+<p>master机</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">tar czf docker-hadoop-completed.tar.gz docker-hadoop/*</div></pre></td></tr></table></figure>
+<blockquote>
+<p>各slave机</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">scp root@[ip.of.master.machine]:~/docker-hadoop-completed.tar.gz ./docker-hadoop.tar.gz</div><div class="line">tar zxf docker-hadoop.tar.gz</div><div class="line"><span class="built_in">cd</span> docker-hadoop</div><div class="line">docker pull caesarz/hadoop</div><div class="line">bash deploy.sh [absolute/path/to/share/dir] slave[1,2,3,...]</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化HDFS</p>
+<blockquote>
+<p>master机</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker <span class="built_in">exec</span> -it hadoop-master bash -c <span class="string">'source /root/.bashrc; bash /root/onekey.sh'</span></div><div class="line">docker <span class="built_in">exec</span> -it hadoop-master bash -c <span class="string">'source /root/.bashrc; bash $HADOOP_HOME/sbin/start-all.sh'</span></div><div class="line">docker <span class="built_in">exec</span> -it hadoop-master bash -c <span class="string">'source /root/.bashrc; hadoop dfs -mkdir -p /user/root'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>执行测试脚本，运行wordcount例子</p>
+<blockquote>
+<p>master机</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> docker-hadoop</div><div class="line">bash test.sh</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>见<a href="https://github.com/LeonardoCaesarZ/docker-hadoop" target="_blank" rel="external">https://github.com/LeonardoCaesarZ/docker-hadoop</a></p>
 
       
     </div>
@@ -390,7 +457,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+            <a href="/tags/分布式/" rel="tag"># 分布式</a>
           
         </div>
       
@@ -403,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/17/nginx动态模块开发-C-language/" rel="next" title="nginx动态模块开发(C language)">
-                <i class="fa fa-chevron-left"></i> nginx动态模块开发(C language)
+              <a href="/2017/11/05/机器学习算法总览/" rel="next" title="机器学习算法总览">
+                <i class="fa fa-chevron-left"></i> 机器学习算法总览
               </a>
             
           </div>
@@ -412,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/27/Sphinx全文检索/" rel="prev" title="Sphinx全文检索">
-                Sphinx全文检索 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简易部署"><span class="nav-number">2.</span> <span class="nav-text">简易部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细部署"><span class="nav-number">3.</span> <span class="nav-text">详细部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
